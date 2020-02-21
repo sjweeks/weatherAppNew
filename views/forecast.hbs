@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Forecast<img src="./images/umbrella2.png" alt="Umbrella"></h1>
+
+        <ul>
+        {{#each data}}
+            <li>{{@key}} : {{this}}</li>
+        {{/each}}
+    </ul>
+
+    <form action="/forecast" method="POST">
+        {{!-- <label for="location">Location: </label> --}}
+        <input class="inputSections" type="text" name="location" placeholder="Enter Location">
+        <br>
+        {{!-- <label for="location">Country Code: </label> --}}
+        <input class="inputSections" type="text" name="countryCode" placeholder="Enter Country Code">
+        <br>
+        <br>
+        <input class="inputButton" type="submit" value="Submit">
+    </form>
+
+
+
+
+
+</div>

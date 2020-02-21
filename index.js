@@ -24,13 +24,23 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/forecast', async(req, res) => {
+  res.render('forecast');
+})
+
+app.get('/navbar', (req, res) => {
+  res.render('navbar');
+})
+
 app.post("/", async (req, res) => {
   let location = req.body.location;
   let countryCode = req.body.countryCode;
   console.log(location);
   console.log(countryCode);
   
-  let data = await getWeather(location, countryCode);
+  let data = await getWeather.getWeather(location, countryCode);
+  console.log(data);
+  
   // console.log(data);
   let name = data.name;
   // let country = data.sys.country;
@@ -46,7 +56,6 @@ app.post("/", async (req, res) => {
   res.render("index", {data: {
     temp,
     name,
-    // country,
     description,
     icon,
     windSpeed,
@@ -56,6 +65,34 @@ app.post("/", async (req, res) => {
     sunset
   }}); //render the index.hbs page
 });
+
+app.post('/forecast', async(req, res) => {
+  let location = req.body.location;
+  let countryCode = req.body.countryCode;
+  console.log(location);
+  console.log(countryCode);
+
+  let data = await getWeather.forecast(location, countryCode);
+  console.log(data);
+
+  let Name = data.city.name
+  let Weather = data.list[0].main.temp;
+  let Feels = data.list[0].main.feels_like;
+  let Description = data.list[0].weather[0].description;
+
+
+  res.render('forecast', {data: {
+    Name,
+    Weather,
+    Feels,
+    Description,
+
+  }});
+});
+
+
+
+
 
 app.listen(3003, () => {
   console.log("server listening on 3003");
