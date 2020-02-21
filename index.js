@@ -41,9 +41,7 @@ app.post("/", async (req, res) => {
   let data = await getWeather.getWeather(location, countryCode);
   console.log(data);
   
-  // console.log(data);
   let name = data.name;
-  // let country = data.sys.country;
   let temp = data.main.temp;
   let description = data.weather[0].description;
   let windSpeed = data.wind.speed;
@@ -79,7 +77,7 @@ app.post('/forecast', async(req, res) => {
   let Weather = data.list[0].main.temp;
   let Feels = data.list[0].main.feels_like;
   let Description = data.list[0].weather[0].description;
-
+  
 
   res.render('forecast', {data: {
     Name,
@@ -89,9 +87,6 @@ app.post('/forecast', async(req, res) => {
 
   }});
 });
-
-
-
 
 
 app.listen(3003, () => {
