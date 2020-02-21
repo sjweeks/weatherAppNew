@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Current Weather data <img src="./images/cloud.png" alt="Cloud" /></h1>
+
+    <ul>
+        {{#each data}}
+            <li>{{@key}} : {{this}}</li>
+        {{/each}}
+    </ul>
+
+    <form action="/" method="POST">
+        {{!-- <label for="location">Location: </label> --}}
+        <input class="inputSections" type="text" name="location" placeholder="Enter Location">
+        <br>
+        {{!-- <label for="location">Country Code: </label> --}}
+        <input class="inputSections" type="text" name="countryCode" placeholder="Enter Country Code">
+        <br>
+        <br>
+        <input class="inputButton" type="submit" value="Submit">
+    </form>
+
+    {{!-- <h2>{{name}}, {{country}}</h2>
+    <p>{{temp}}°C </p>
+    <p>{{description}}</p>
+    <p>Windspeed: {{windSpeed}}</p>
+    <p>Pressure: {{pressure}}</p>
+    <p>Humidity: {{humidity}}</p> --}}
+    {{!-- <p>{{sunrise}}</p>
+<p>{{sunset}}</p> --}}
+
+</div>
